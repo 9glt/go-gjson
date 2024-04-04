@@ -40,3 +40,14 @@ func TestMustUnmarshal(t *testing.T) {
 		t.Fatalf("expected %q, got %q", "test", v.Name)
 	}
 }
+
+func TestString(t *testing.T) {
+	data := []byte(`"some value"`)
+	v, err := gjson.Unmarshal[string](data)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if v != `some value` {
+		t.Fatalf("expected %q, got %q", `some value`, v)
+	}
+}
